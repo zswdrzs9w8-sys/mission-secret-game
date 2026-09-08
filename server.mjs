@@ -3,7 +3,8 @@ import {readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import crypto from 'node:crypto';
-const root=path.join(path.dirname(fileURLToPath(import.meta.url)),'public'),rooms=new Map();
+// ملفات الواجهة مرفوعة في جذر المستودع لتسهيل الرفع من GitHub.
+const root=path.dirname(fileURLToPath(import.meta.url)),rooms=new Map();
 const uid=()=>crypto.randomUUID(),token=()=>crypto.randomBytes(24).toString('hex'),code=()=>crypto.randomBytes(3).toString('hex').slice(0,5).toUpperCase();
 const clean=(v,n=20)=>String(v??'').trim().slice(0,n),spies=r=>r==='jasoos'||r==='abeet';
 const shuffle=a=>{const b=[...a];for(let i=b.length-1;i;i--){const j=crypto.randomInt(i+1);[b[i],b[j]]=[b[j],b[i]]}return b};
